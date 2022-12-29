@@ -18,23 +18,13 @@ const Navbar = () => {
       {user?.uid && (
         <>
           <li>
-            <Link to="/allproducts">All Products</Link>
-          </li>
-          <li>
-            <Link to="/addproducts">Add Products</Link>
+            <Link to="/addpost">Add Post</Link>
           </li>
         </>
       )}
 
-      <li>
-        <Link to="/about">Blog</Link>
-      </li>
-
       {user?.uid ? (
         <>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
           <li>
             <button onClick={handleLogOut}>Sign out</button>
           </li>
@@ -76,21 +66,12 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
-          RESALE PHONE
+          Like Media
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
-      {user && (
-        <label
-          htmlFor="DashboardDrawer"
-          tabIndex={2}
-          className="btn btn-ghost lg:hidden"
-        >
-          DB
-        </label>
-      )}
     </div>
   );
 };

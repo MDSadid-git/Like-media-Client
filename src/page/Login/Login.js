@@ -88,7 +88,7 @@ const Login = () => {
             </div>
           </form>
           <p className="mt-5">
-            New to Resale Phone{" "}
+            New to Like Media{" "}
             <Link className="text-secondary" to={"/singup"}>
               Creat new Account
             </Link>

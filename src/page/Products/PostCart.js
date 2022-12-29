@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../UserContext/UserContext";
 
-const ServicesCart = ({ ser: { image, productName, _id }, ser }) => {
+const ServicesCart = ({ ser: { image, name, _id }, ser }) => {
   const { user } = useContext(AuthContext);
   const datadetails = {
     email: user?.email,
-    productName,
+    name,
   };
 
   return (
@@ -16,11 +16,11 @@ const ServicesCart = ({ ser: { image, productName, _id }, ser }) => {
           <img src={image} alt="car!" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{productName}</h2>
+          <h2 className="card-title">{name}</h2>
 
           <hr />
           <div className="card-actions justify-start">
-            <Link to={`/cataproducts/${_id}`}>
+            <Link to={`/catapost/${_id}`}>
               <button className="btn btn-secondary">details</button>
             </Link>
           </div>

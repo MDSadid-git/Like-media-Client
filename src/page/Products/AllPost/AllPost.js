@@ -1,16 +1,22 @@
-import { useQuery } from "@tanstack/react-query";
-import React from "react";
-import { useLoaderData } from "react-router-dom";
-import Products from "../Products";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import Products from "../Post";
 
-const AllProducts = () => {
-  const allData = useLoaderData();
-
+const AllPost = () => {
+  const [myAllPost, setMyAllpost] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/myallPost`)
+      .then((res) => res.json())
+      .then((data) => setMyAllpost(data));
+  }, []);
+  console.log(myAllPost);
   return (
     <div>
       <Products></Products>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {allData.data.map((ses, i) => (
+        {myAllPost.map((ses, i) => (
           <>
             <div className="card w-4/5 glass mx-auto my-9" key={i}>
               <figure>
@@ -18,17 +24,15 @@ const AllProducts = () => {
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{ses.datePosted}</h2>
-                <h2 className="card-title">{ses.location}</h2>
+                <h2 className="card-title">{ses.message}</h2>
                 <p>Name: {ses.name}</p>
                 <p>OriginalPrice: {ses.originalPrice}</p>
                 <p>ResalePrice: {ses.resalePrice}</p>
                 <h2 className="card-title">Seller: {ses.sellerName}</h2>
                 <hr />
-                <div className="card-actions justify-start">
-                  <label htmlFor="my-modal" className="btn">
-                    Book Now
-                  </label>
-                </div>
+                <Link to={`/myEditPost/${ses._id}`}>
+                  <button className="btn btn-secondary">details</button>
+                </Link>
               </div>
             </div>
           </>
@@ -38,4 +42,4 @@ const AllProducts = () => {
   );
 };
 
-export default AllProducts;
+export default AllPost;

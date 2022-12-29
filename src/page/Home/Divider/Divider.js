@@ -60,20 +60,20 @@ const Divider = () => {
                 </div>
               </div>
               <div className="stat-value">86%</div>
-              <div className="stat-title">Tasks done</div>
-              <div className="stat-desc text-secondary">31 tasks remaining</div>
+              <div className="stat-title">User Post</div>
+              <div className="stat-desc text-secondary">31 Post remaining</div>
             </div>
           </div>
         </div>
         <div className="divider lg:divider-horizontal">OR</div>
         <div className="grid flex-grow h-32 card  rounded-box place-items-center">
           <div className="mx-5">
-            <h1 className="text-4xl font-bold">Countdown to Resale Phone!</h1>
+            <h1 className="text-4xl font-bold">Countdown to Like Media!</h1>
             <p className="py-6">
-              The iPhone is considerably better in terms of Resale Value <br />
-              especially during the initial years of its release. For instance,{" "}
-              <br />
-              the iPhone 12 Pro.
+              Innovative print marketing and digital marketing for hyper-local
+              branding.
+              <br /> Set yourself apart by utilizing our unique hybrid marketing
+              agency, Like Media.
             </p>
             <button className="btn btn-secondary">More Info</button>
           </div>

@@ -61,7 +61,7 @@ const Singup = () => {
   };
   const saveUser = (email, name, specialty) => {
     const user = { email, name, specialty };
-    fetch(`https://resale-server-eight.vercel.app/users`, {
+    fetch(`http://localhost:5000/users`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -130,19 +130,7 @@ const Singup = () => {
               />
               {errors.password && <p>{errors.password.message}</p>}
             </div>
-            <div className="form-control w-full max-w-xs">
-              <label className="label">
-                {" "}
-                <span className="label-text">Specialty</span>
-              </label>
-              <select
-                {...register("specialty")}
-                className="select input-bordered w-full max-w-xs"
-              >
-                <option>Seller</option>
-                <option>Buyer</option>
-              </select>
-            </div>
+
             <input
               className="btn btn-secondary w-full my-5"
               value="Sing up"

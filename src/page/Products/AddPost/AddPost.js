@@ -26,18 +26,15 @@ const AddProducts = () => {
       .then((ImageData) => {
         if (ImageData.success) {
           const products = {
-            name: data.name,
             email: data.email,
-            specialty: data.specialty,
-            location: data.location,
+            name: data.name,
+            message: data.location,
+            mood: data.originalPrice,
             image: ImageData.data.url,
-            resalePrice: data.resalePrice,
-            originalPrice: data.originalPrice,
             datPosted: data.datePosted,
-            sellerName: data.sellerName,
           };
           // save doctor information
-          fetch(`https://resale-server-eight.vercel.app/porducts`, {
+          fetch(`http://localhost:5000/myPost`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -49,19 +46,21 @@ const AddProducts = () => {
             .then((result) => {
               console.log(result);
               toast.success(`${data.name} is Added successfully`);
-              navigate("/allproducts");
+              navigate("/");
             });
         }
       });
   };
   return (
     <div>
-      <h1 className="text-3xl text-center my-10">Add New Products</h1>
+      <h1 className="text-3xl text-center my-10 font-extrabold">
+        Add New Post
+      </h1>
       <div className=" flex justify-center items-center">
         <div className="w-3/6 p-7 bg-slate-100 rounded-xl">
           <form onSubmit={handleSubmit(handleProducts)}>
             <div className="flex md:flex-row flex-col">
-              <div className="form-control w-full max-w-xs mr-3">
+              <div className="form-control w-5/6 max-w-xs mr-3">
                 <label className="label">
                   {" "}
                   <span className="label-text">Name</span>
@@ -78,41 +77,7 @@ const AddProducts = () => {
               <div className="form-control w-full max-w-xs">
                 <label className="label">
                   {" "}
-                  <span className="label-text">Location</span>
-                </label>
-                <input
-                  type="text"
-                  {...register("location", {
-                    required: "password is required",
-                  })}
-                  className="input input-bordered w-full max-w-xs"
-                />
-                {errors.location && (
-                  <p className="text-red-500">{errors.location.message}</p>
-                )}
-              </div>
-            </div>
-            <div className="flex md:flex-row flex-col">
-              <div className="form-control w-full max-w-xs mr-3">
-                <label className="label">
-                  {" "}
-                  <span className="label-text">ResalePrice</span>
-                </label>
-                <input
-                  type="text"
-                  {...register("resalePrice", {
-                    required: "password is required",
-                  })}
-                  className="input input-bordered w-full max-w-xs"
-                />
-                {errors.resalePrice && (
-                  <p className="text-red-500">{errors.resalePrice.message}</p>
-                )}
-              </div>
-              <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  {" "}
-                  <span className="label-text">OriginalPrice</span>
+                  <span className="label-text">Mood</span>
                 </label>
                 <input
                   type="text"
@@ -127,39 +92,41 @@ const AddProducts = () => {
               </div>
             </div>
             <div className="flex md:flex-row flex-col">
-              <div className="form-control w-full max-w-xs mr-3">
+              <div className="form-control w-full max-w-xs">
                 <label className="label">
                   {" "}
-                  <span className="label-text">Date</span>
+                  <span className="label-text">Post</span>
+                </label>
+                <input
+                  type="text"
+                  {...register("location", {
+                    required: "password is required",
+                  })}
+                  className="input input-bordered w-full max-w-xs "
+                />
+                {errors.location && (
+                  <p className="text-red-500">{errors.location.message}</p>
+                )}
+              </div>
+              <div className="form-control w-full max-w-xs">
+                <label className="label">
+                  {" "}
+                  <span className="label-text ml-3">Date</span>
                 </label>
                 <input
                   type="text"
                   {...register("datePosted", {
                     required: "password is required",
                   })}
-                  className="input input-bordered w-full max-w-xs"
+                  className="input input-bordered w-full max-w-xs ml-3"
                 />
                 {errors.datePosted && (
                   <p className="text-red-500">{errors.datePosted.message}</p>
                 )}
               </div>
-              <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  {" "}
-                  <span className="label-text">SellerName</span>
-                </label>
-                <input
-                  type="text"
-                  {...register("sellerName", {
-                    required: "password is required",
-                  })}
-                  className="input input-bordered w-full max-w-xs"
-                />
-                {errors.sellerName && (
-                  <p className="text-red-500">{errors.sellerName.message}</p>
-                )}
-              </div>
             </div>
+
+            <div className="flex md:flex-row flex-col"></div>
 
             <div className="form-control w-full max-w-xs mx-auto">
               <label className="label">
@@ -175,7 +142,7 @@ const AddProducts = () => {
             </div>
             <input
               className="btn btn-secondary w-full my-4"
-              value="Add Products"
+              value="Add Post"
               type="submit"
             />
             <div></div>

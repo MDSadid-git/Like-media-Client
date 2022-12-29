@@ -14,13 +14,13 @@ const MyUser = () => {
   const { data: userData = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch(`https://resale-server-eight.vercel.app/users`);
+      const res = await fetch(`http://localhost:5000/users`);
       const data = res.json();
       return data;
     },
   });
   const handleAdmin = (id) => {
-    fetch(`https://resale-server-eight.vercel.app/users/admin/${id}`, {
+    fetch(`http://localhost:5000/users/admin/${id}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -35,7 +35,7 @@ const MyUser = () => {
       });
   };
   const handleVerify = (id) => {
-    fetch(`https://resale-server-eight.vercel.app/users/verify/${id}`, {
+    fetch(`http://localhost:5000/users/verify/${id}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -50,7 +50,7 @@ const MyUser = () => {
       });
   };
   const handleDeletuser = (user) => {
-    fetch(`https://resale-server-eight.vercel.app/users/${user._id}`, {
+    fetch(`http://localhost:5000/users/${user._id}`, {
       method: "DELETE",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
